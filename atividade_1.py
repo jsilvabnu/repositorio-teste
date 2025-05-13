@@ -12,6 +12,7 @@ if not api_key:
 url = "https://newsapi.org/v2/everything"
 
 temas = []
+quantidade_noticias = []
 
 def menu():
 
@@ -23,7 +24,7 @@ def menu():
     return opcao
 
 def buscar_noticias():
-    
+
     tema = input("Digite o tema que deseja pesquisar: ")
     temas.append(tema)
     headers = {
@@ -51,7 +52,10 @@ while True:
 
     opcao = menu()
     if opcao == "0":
+        print("Saindo do sistema...")
         print("Você pesquisou sobre:", temas)
+        print(f"Soma das notícias pesquisadas: {sum(quantidade_noticias)}.")
+        
         break
     elif opcao == "1":
         try:
@@ -61,6 +65,7 @@ while True:
             continue
 
         if 5 >= quantidade > 0:
+            quantidade_noticias.append(quantidade)
             buscar_noticias()
 
         else:
