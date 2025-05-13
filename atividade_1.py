@@ -24,6 +24,24 @@ def menu():
     return opcao
 
 def buscar_noticias():
+    """
+    Usuário informa um tema da notícia, a função consulta notícias relacionadas via API NEWS e exibe os resultados solicitados.
+
+    - Usuário informa um termo de pesquisa.
+    - Adicina o tema da notícia a lista "temas".
+    - Faz a requisição GET da API NEWS usando "API_KEY" e "URL".
+    - Exibe o status da resposta.
+    - Exibe o título, descrição, fonte e autor de cada notícia retornada.
+    - Limita a 5 noticias.
+
+    Requisitos:
+    - Variáveis globais previamente definidas (tema, quantidade, API_KEY, url).
+    - Importar a biblioteca requests.
+
+    Saída:
+    - Retorna ao usuário as informações das notícias encontradas de acordo com o tema solicitado.
+    
+    """
 
     tema = input("Digite o tema que deseja pesquisar: ")
     temas.append(tema)
