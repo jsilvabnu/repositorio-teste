@@ -15,6 +15,15 @@ temas = []
 quantidade_noticias = []
 
 def menu():
+    """
+    Exibe um menú de opções para o usuário.
+
+    - Solicita ao usuário que insira uma opção (0 ou 1).
+
+    Saída:
+    - Se usuário escolher opção 1, continua com a função buscar_noticias().
+    - Se usuário escolher opção 0, retorna todos os temas pesquisados e a soma da quantidade de notícias pesquisadas.
+    """
 
     print("\nMENU")
     print("0. Sair")
