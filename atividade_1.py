@@ -1,17 +1,30 @@
+# Importa o módulo 'requests' para fazer requisições HTTP
 import requests
+
+# Importa o módulo 'os' para acessar variáveis de ambiente
 import os
+
+# Importa a função 'load_dotenv' do módulo 'dotenv' para carregar variáveis de ambiente de um arquivo .env
 from dotenv import load_dotenv
 
+# Carrega as variáveis de ambiente do arquivo .env para o ambiente do sistema
 load_dotenv()
 
+# Recupera a chave da API para acessar as notícias a partir das variáveis de ambiente
 api_key = os.getenv("API_KEY_NOTICIAS")
 
+# Verifica se a chave da API foi encontrada nas variáveis de ambiente
+# Se não, lança um erro com uma mensagem informando que a chave não foi encontrada
 if not api_key:
     raise ValueError("API Key não encontrada nas variáveis de ambiente")
 
+# Define a URL da API de notícias para realizar a consulta
 url = "https://newsapi.org/v2/everything"
 
+# Cria uma lista vazia chamada 'temas', que será usada para armazenar temas de pesquisa de notícias
 temas = []
+
+# Cria uma lista vazia chamada 'quantidade_noticias', que será usada para armazenar a quantidade de notícias a serem retornadas
 quantidade_noticias = []
 
 def menu():
@@ -75,28 +88,48 @@ def buscar_noticias():
         print("Fonte: ", artigo["url"])
         print("Autor: ", artigo["author"])
 
+# Inicia um loop infinito para o menu, permitindo que o usuário interaja repetidamente
 while True:
 
+    # Chama a função 'menu()' que exibe as opções e recebe a escolha do usuário
     opcao = menu()
+
+    # Se a opção escolhida for "0", sai do sistema
     if opcao == "0":
         print("Saindo do sistema...")
+
+        # Exibe os temas que foram pesquisados durante a execução do programa
         print("Você pesquisou sobre:", temas)
+
+        # Exibe a soma da quantidade de notícias pesquisadas até o momento
         print(f"Soma das notícias pesquisadas: {sum(quantidade_noticias)}.")
         
+        # Interrompe o loop e finaliza o programa
         break
+
+    # Se a opção escolhida for "1", permite ao usuário consultar notícias
     elif opcao == "1":
         try:
+            # Solicita ao usuário a quantidade de notícias a serem consultadas (limite de 5)
             quantidade = int(input("Digite a quantidade de noticia que deseja consultar (máximo de 5):"))
         except ValueError:
+            # Caso o usuário digite um valor inválido (não numérico), exibe um erro e continua o loop
             print("Erro de valor. Tente novamente e digite um número válido.")
             continue
 
+        # Verifica se a quantidade digitada está entre 1 e 5
         if 5 >= quantidade > 0:
+            # Adiciona a quantidade de notícias à lista 'quantidade_noticias'
             quantidade_noticias.append(quantidade)
+
+            # Chama a função 'buscar_noticias()' para realizar a consulta de notícias
             buscar_noticias()
 
         else:
+            # Caso a quantidade seja inválida (menor que 1 ou maior que 5), exibe uma mensagem de erro
             print("Quantidade inválida. Tente novamente.")
+
+    # Caso o usuário digite uma opção inválida (diferente de 0 ou 1), exibe uma mensagem de erro
     else:
         print("Opção inválida. Tente novamente.")
 
