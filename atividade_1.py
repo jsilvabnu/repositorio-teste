@@ -99,7 +99,7 @@ while True:
         print("Saindo do sistema...")
 
         # Exibe os temas que foram pesquisados durante a execução do programa
-        print("Você pesquisou sobre:", temas)
+        print("Você pesquisou sobre:", ", ".join(temas))
 
         # Exibe a soma da quantidade de notícias pesquisadas até o momento
         print(f"Soma das notícias pesquisadas: {sum(quantidade_noticias)}.")
