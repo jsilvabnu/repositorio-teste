@@ -8,7 +8,7 @@ Este projeto é um exercício prático que simula um sistema interativo de consu
 
 Permitir que o usuário:
 - Consulte notícias de temas variados.
-- Defina quantas notícias deseja ver (com limite).
+- Limite de 5 notícias para visualizar.
 - Veja informações organizadas de cada notícia.
 - Receba um resumo ao final com:
   - Temas buscados.
