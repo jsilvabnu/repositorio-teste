@@ -18,6 +18,17 @@ quantidade_comentarios_visualizados = 0
 quantidade_posts_criados = 0
 
 def menu_inicial():
+    """
+    Exibe o menu principal do sistema e solicita a escolha do usuário.
+
+    Opções disponíveis:
+        0 - Sair do sistema
+        1 - Fazer login
+        2 - Cadastrar novo usuário
+
+    Retorno:
+        str: Opção escolhida pelo usuário (como string)
+    """
 
     print("\nMenu de opções:")
     print("""
@@ -28,6 +39,21 @@ def menu_inicial():
     return input("Escolha uma opção: ")
 
 def menu_pos_login(codigo_usuario_logado):
+    """
+    Exibe o menu de opções para o usuário logado e executa ações com base na escolha.
+
+    Parâmetros:
+        codigo_usuario_logado (int): Identificador do usuário logado.
+
+    Ações disponíveis:
+        1 - Ver todos os posts
+        2 - Ver todos os comentários
+        3 - Ver apenas os posts do usuário logado
+        4 - Ver posts de outro usuário
+        5 - Criar novo post
+        6 - Sair do menu
+
+    """
     while True:
         print("\n=== MENU ===")
         print("1 - Ver posts")
@@ -55,6 +81,20 @@ def menu_pos_login(codigo_usuario_logado):
             print("Opção inválida. Tente novamente.")
 
 def ver_posts():
+    """
+    Solicita uma quantidade ao usuário e exibe esse número de posts da API JSONPlaceholder.
+
+    Funcionalidades:
+        - Valida a entrada numérica
+        - Faz requisição à API pública de posts
+        - Exibe título e corpo dos posts
+        - Atualiza contador global de visualizações
+
+    Requisitos:
+        - Variável global: quantidade_posts_visualizados
+        - Bibliotecas: requests, time
+
+    """
 
     try:
         quantidade = int(input("Quantos posts você deseja ver? "))
@@ -82,6 +122,20 @@ def ver_posts():
         print("Erro ao carregar os posts.")
 
 def ver_comentarios():
+    """
+    Solicita uma quantidade ao usuário e exibe esse número de comentários da API JSONPlaceholder.
+
+    Funcionalidades:
+        - Valida a entrada numérica
+        - Faz requisição à API pública de comentários
+        - Exibe e-mail e corpo do comentário
+        - Atualiza contador global de visualizações
+
+    Requisitos:
+        - Variável global: quantidade_comentarios_visualizados
+        - Bibliotecas: requests, time
+
+    """
     try:
         quantidade = int(input("Quantos comentários você deseja ver? "))
         if quantidade <= 0:
@@ -108,6 +162,22 @@ def ver_comentarios():
         print("Erro ao carregar os comentários.")
 
 def ver_posts_do_usuario(codigo_usuario_logado):
+    """
+    Exibe todos os posts feitos pelo usuário logado, tanto da API quanto os locais.
+
+    Parâmetros:
+        codigo_usuario_logado (int): ID do usuário logado
+
+    Funcionalidades:
+        - Busca posts da API com o userId do usuário
+        - Verifica se há posts criados localmente por esse usuário
+        - Exibe título e corpo de cada post encontrado
+
+    Requisitos:
+        - Lista global: posts_criados_localmente
+        - Biblioteca: requests, time
+
+    """
     print("\nCarregando posts do seu usuário...")
     time.sleep(2)
 
@@ -140,6 +210,18 @@ def ver_posts_do_usuario(codigo_usuario_logado):
         print("Este usuário não possui posts.")
 
 def ver_posts_de_outro_usuario():
+    """
+    Solicita um ID de usuário e exibe todos os posts desse usuário a partir da API.
+
+    Funcionalidades:
+        - Valida entrada do ID
+        - Busca na API todos os posts com esse userId
+        - Exibe título e corpo dos posts encontrados
+
+    Requisitos:
+        - Biblioteca: requests, time
+
+    """
     try:
         user_id = int(input("Digite o ID do usuário que você quer ver os posts: "))
         if user_id <= 0:
@@ -175,6 +257,24 @@ def ver_posts_de_outro_usuario():
         print("Erro ao buscar posts.")
 
 def criar_post(codigo_usuario_logado):
+    """
+    Permite ao usuário logado criar um novo post e o envia para a API.
+
+    Parâmetros:
+        codigo_usuario_logado (int): ID do usuário que está criando o post
+
+    Funcionalidades:
+        - Recebe título e conteúdo do post
+        - Envia dados via POST para a API
+        - Salva o post em uma lista local
+        - Atualiza o contador global de posts criados
+
+    Requisitos:
+        - Lista global: posts_criados_localmente
+        - Variável global: quantidade_posts_criados
+        - Bibliotecas: requests, time
+
+    """
     print("\n=== Criar Novo Post ===")
     titulo = input("Digite o título do post: ")
     corpo = input("Digite o conteúdo do post: ")
@@ -205,6 +305,18 @@ def criar_post(codigo_usuario_logado):
         print("Erro ao criar o post.")
 
 def cadastrar_usuario(usuarios):
+    """
+    Cadastra um novo usuário e o adiciona na lista de usuários existentes.
+
+    Parâmetros:
+        usuarios (list): Lista onde os dados dos usuários são armazenados
+
+    Ações:
+        - Solicita email e senha
+        - Atribui um novo código automático
+        - Adiciona o usuário à lista
+
+    """
     usuario = {}
     usuario["codigo"] = len(usuarios)+1
     usuario["email"] = input("Digite o email: ")
@@ -214,6 +326,18 @@ def cadastrar_usuario(usuarios):
     print(usuarios)
 
 def login():
+    """
+    Realiza o login do usuário verificando e-mail e senha.
+
+    Ações:
+        - Solicita credenciais do usuário
+        - Verifica se e-mail e senha correspondem a um usuário cadastrado
+        - Em caso de sucesso, chama o menu pós-login
+        - Exibe mensagem de erro caso as credenciais estejam incorretas
+
+    Requisitos:
+        - Lista global: usuarios
+    """
     email = input("Digite seu email: ")
     senha = input("Digite sua senha: ")
 
