@@ -1,24 +1,40 @@
-# 📰 Atividade Final 1 — Consulta de Notícias com NewsAPI
+# 🧠 Projeto Final — Consulta de Notícias + Sistema de Posts
 
-Este projeto é um exercício prático que simula um sistema interativo de consulta de notícias, utilizando a **[NewsAPI](https://newsapi.org/)** para buscar os artigos mais recentes com base em temas fornecidos pelo usuário.
+Este repositório reúne dois exercícios práticos com foco em APIs e interação com o usuário via terminal. Ambos os projetos simulam sistemas de uso real, reforçando conceitos como requisições HTTP, manipulação de dados e menus interativos em Python.
 
 ---
 
-## ✅ Objetivo
+## 📌 Parte 1 — Consulta de Notícias com NewsAPI
 
-Permitir que o usuário:
-- Consulte notícias de temas variados.
-- Limite de 5 notícias para visualizar.
-- Veja informações organizadas de cada notícia.
-- Receba um resumo ao final com:
-  - Temas buscados.
+Sistema interativo que consulta artigos recentes usando a **[NewsAPI](https://newsapi.org/)**, com base em temas fornecidos pelo usuário.
+
+### ✅ Funcionalidades
+
+- Consulta notícias por tema.
+- Exibe no máximo 5 notícias por pesquisa.
+- Organiza as informações (título, fonte e descrição).
+- Gera um resumo final com:
+  - Todos os temas buscados.
   - Total de notícias consultadas.
 
 ---
 
-## 🚀 Como Executar
+## 📌 Parte 2 — Sistema de Posts e Comentários com JSONPlaceholder
 
-### 1. Requisitos
+Simulação de uma rede social simples, com opções de login, visualização e criação de posts, integrando com a **[JSONPlaceholder](https://jsonplaceholder.typicode.com/)** (API gratuita para testes).
 
-- Python 3.x
-- Conta na [NewsAPI](https://newsapi.org/) para obter uma API Key.
+### ✅ Funcionalidades
+
+- Menu de login e cadastro de usuário.
+- Visualizar:
+  - Posts públicos.
+  - Comentários públicos.
+  - Meus posts.
+  - Posts de outro usuário.
+- Criar novo post (salvo localmente).
+- Exibe resumo final com totais:
+  - Posts visualizados.
+  - Comentários visualizados.
+  - Posts criados.
+
+---
